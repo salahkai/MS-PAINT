@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="panel">
+      <div class="panel-image"></div>
+      <div class="panel-tools"></div>
+      <div class="panel-brushes"></div>
+      <div class="panel-divider"></div>
+
+      <div class="panel-shapes">
+        <div class="panel-shapes-list">
+          <div shape="line"></div>
+          <div shape="circle"></div>
+        </div>
+      </div>
+      <div class="panel-divider"></div>
+
+      <div class="panel-sizes">
+        <div class="panel-sizes-selection large-btn">
+          <div class="box"></div>
+          <span>Size </span>
+        </div>
+        <div class="panel-sizes-selection-menu hidden">
+          <div class="size-box"></div>
+          <div class="size-box"></div>
+          <div class="size-box"></div>
+          <div class="size-box"></div>
+        </div>
+      </div>
+
+      <div class="panel-divider"></div>
+      <div class="panel-colors">
+        <div class="panel-colors-list">
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+          <div class="color-box"></div>
+        </div>
+
+        <div class="panel-colors-edit large-btn">
+          <div class="color-box"></div>
+          <input type="color" id="color-picker-btn" />
+          <span>Edit colors</span>
+        </div>
+
+        <div class="panel-colors-primary large-btn active">
+          <div class="color-box"></div>
+          <span>Color 1</span>
+        </div>
+        <div class="panel-colors-secondary large-btn">
+          <div class="color-box"></div>
+          <span>Color 2</span>
+        </div>
+      </div>
+    </div>
+    <div class="panel-board-container">
+      <canvas width="500" height="500" id="board"
+        >Your browser doesn't support canvas!</canvas
+      >
+
+      <!-- <canvas class="new-layer test" width="100" height="100"
+        >Your browser doesn't support canvas!</canvas
+      > -->
+    </div>
+    <div class="status-bar"></div>
+  </body>
+  <script src="script.js"></script>
+  <script
+    src="https://kit.fontawesome.com/8486ea4ba8.js"
+    crossorigin="anonymous"
+  ></script>
+</html>
