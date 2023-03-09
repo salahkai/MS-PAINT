@@ -143,19 +143,17 @@ body {
 .panel-sizes {
   position: relative;
 }
-.panel-sizes .box {
-  height: 28px;
-  width: 28px;
+.panel-sizes-selection .box {
+  height: 27px;
+  width: 32px;
   background-image: url(./icons/sizes.png);
 }
-.panel-sizes .large-btn {
+
+.large-btn {
   position: relative;
 }
-
-.panel-sizes-selection-menu {
+.pop-up-selection-menu {
   position: absolute;
-  width: 132px;
-  height: 166px;
   background-color: #fff;
   border: 1px solid var(--secondary-color);
   border-radius: 1px;
@@ -164,25 +162,29 @@ body {
   transform: translateY(100%);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
   display: flex;
+  padding: 2px 1px 2px 1px;
+  z-index: 10000;
+}
+.panel-sizes-selection-menu {
+  width: 132px;
+  height: 166px;
   flex-direction: column;
   justify-content: space-around;
-  padding: 2px 1px 2px 1px;
-  z-index: 1;
 }
 
-.panel-sizes-selection-menu .size-box {
+.panel-sizes-selection-menu .selection-box {
   margin: 1px;
   flex: 1;
   position: relative;
   padding: 2px;
 }
 
-.panel-sizes-selection-menu .size-box:hover {
+.selection-box:hover {
   background-color: #e8eff7;
   border: 1px solid #a4cef9;
 }
 
-.panel-sizes-selection-menu .size-box::after {
+.panel-sizes-selection-menu .selection-box::after {
   content: '';
   width: 80%;
   top: 50%;
@@ -193,15 +195,15 @@ body {
   position: absolute;
 }
 
-.panel-sizes-selection-menu .size-box:nth-child(2)::after {
+.panel-sizes-selection-menu .selection-box:nth-child(2)::after {
   height: 4px;
 }
 
-.panel-sizes-selection-menu .size-box:nth-child(3)::after {
+.panel-sizes-selection-menu .selection-box:nth-child(3)::after {
   height: 6px;
 }
 
-.panel-sizes-selection-menu .size-box:nth-child(4)::after {
+.panel-sizes-selection-menu .selection-box:nth-child(4)::after {
   height: 8px;
 }
 
@@ -252,7 +254,7 @@ body {
   background-color: var(--hover-background-color);
 }
 
-.small-btn-active {
+.small-box-active {
   background-color: var(--secondary-hover-color);
   border: 1px solid var(--main-hover-color);
 }
@@ -261,6 +263,42 @@ body {
 }
 .panel-shapes-list > div[shape='circle'] {
   background-image: url(./icons/shapes/circle.png);
+}
+
+/* ############### brushes ###############  */
+.panel-brushes {
+  position: relative;
+}
+.panel-brushes-selection .box {
+  background-image: url(./icons/brushes/1.png);
+  height: 32px;
+  width: 32px;
+}
+.panel-brushes-selection-menu {
+  flex-wrap: wrap;
+
+  width: 164px;
+}
+.panel-brushes-selection-menu .selection-box {
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.panel-brushes-selection-menu :nth-child(1) {
+  background-image: url(./icons/brushes/1.png);
+}
+.panel-brushes-selection-menu :nth-child(2) {
+  background-image: url(./icons/brushes/2.png);
+}
+.panel-brushes-selection-menu :nth-child(3) {
+  background-image: url(./icons/brushes/brush.png);
+}
+.panel-brushes-selection-menu :nth-child(4) {
+  background-image: url(./icons/brushes/brush.png);
+}
+.panel-brushes-selection-menu :nth-child(5) {
+  background-image: url(./icons/brushes/brush.png);
 }
 /* ############### Board ###############  */
 
@@ -278,7 +316,6 @@ body {
   /* border: 1px solid black; */
   position: absolute;
   margin: 5px 6px;
-  /* padding: 20px; */
   /* background-color: black; */
   left: 100px;
   top: 100px;
