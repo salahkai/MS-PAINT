@@ -190,7 +190,7 @@ function addNewColor() {
   }
   renderAdditionalColorsBackground();
 }
-//////////////////////// drawing ////////////////////////
+//////////////////////// drawing ///////////////////////
 // draw line and circle at the same time to fix the issue when the mouse is fast
 
 let mouseDown = false;
