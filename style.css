@@ -316,7 +316,7 @@ body {
   /* border: 1px solid black; */
   position: absolute;
   margin: 5px 6px;
-  /* background-color: black; */
+  background-color: transparent;
   left: 100px;
   top: 100px;
 }

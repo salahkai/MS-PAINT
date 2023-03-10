@@ -23,6 +23,8 @@ const panelBrushes = document.querySelector('.panel-brushes');
 const brushesSelectionList = brushesSelectionMenu.children;
 const brushesBg = brushesSelectBtn.querySelector('.box');
 
+const shapesListBtns = document.querySelectorAll('.panel-shapes-list > div');
+
 const boardContainer = document.querySelector('.panel-board-container');
 //////////////////////// Canva Variables ////////////////////////
 
@@ -104,6 +106,8 @@ function changeSize(size) {
 //////////////////////// Brushes ////////////////////////
 
 brushesSelectBtn.addEventListener('click', () => {
+  drawShapeOff();
+  drawOn();
   showPopUp(brushesSelectionMenu, brushesSelectBtn, panelBrushes);
 });
 
@@ -115,6 +119,8 @@ brushesSelectBtn.addEventListener('click', () => {
 });
 
 function changeBrush(b) {
+  drawShapeOff();
+  drawOn();
   brushesBg.style.backgroundImage = `url(./icons/brushes/${b}.png)`;
   brush = b;
 }
@@ -240,38 +246,36 @@ function drawLine(ctx, x, y, x2, y2, size, opacity) {
 }
 
 //////////////////////// shapes ////////////////////////
+let isDrawShape = false;
 let shape;
-const shapesListBtns = document.querySelectorAll('.panel-shapes-list > div');
 shapesListBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     shapesListBtns.forEach((btn) => btn.classList.remove('small-box-active'));
     shape = btn.getAttribute('shape');
     btn.classList.add('small-box-active');
+    isDrawShape = true;
     drawShape();
   });
 });
 
-function drawShape(removeEventL) {
-  if (removeEventL) {
-    boardContainer.removeEventListener('mousedown', handleDrawShape);
-    console.log('works');
-  } else {
-    let canvas2;
-    let ctx2;
-    let mouseDown = false;
-    let lockX, lockY, x, y;
-    drawOff();
-    boardContainer.addEventListener('mousedown', handleDrawShape);
+function drawShape() {
+  let canvas2;
+  let ctx2;
+  let mouseDown = false;
+  let lockX, lockY, x, y;
+  drawOff();
+  boardContainer.addEventListener('mousedown', handleDrawShape);
 
-    function createNewCanva() {
-      let canvasEl = document.createElement('canvas');
-      boardContainer.appendChild(canvasEl);
-      canvasEl.classList.add('new-layer');
-      canvas2 = canvasEl;
-      ctx2 = canvas2.getContext('2d');
-    }
+  function createNewCanva() {
+    let canvasEl = document.createElement('canvas');
+    boardContainer.appendChild(canvasEl);
+    canvasEl.classList.add('new-layer');
+    canvas2 = canvasEl;
+    ctx2 = canvas2.getContext('2d');
+  }
 
-    function handleDrawShape(e) {
+  function handleDrawShape(e) {
+    if (isDrawShape) {
       createNewCanva();
       mouseDown = true;
       lockX =
@@ -431,7 +435,7 @@ function drawShape(removeEventL) {
 }
 
 function drawShapeOff() {
-  drawShape(true);
+  isDrawShape = false;
 }
 // const test = document.querySelector('.test');
 // const ctxx = test.getContext('2d');
