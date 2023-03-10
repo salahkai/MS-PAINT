@@ -210,29 +210,8 @@ body {
 .hidden {
   display: none;
 }
-/* .downward-arrow {
-   display: flex;
-  flex-direction: column;
-  position: relative; 
-  font-size: 0.9rem;
-  border: 1px solid black;
-  display: block;
-  width: fit-content;
-  height: 5px;
-}
-.downward-arrow::after {
-  left: 50%;
-  position: absolute;
-  content: '\2023';
-  transform: translate(-50%, -30%) rotate(90deg);
-  font-size: 0.9rem;
-} */
 
 /* ############### shapes ###############  */
-
-/* .panel-shapes-list::-webkit-scrollbar {
-  width: 20px;
-} */
 .panel-shapes-list {
   width: 143px;
   height: 60px;

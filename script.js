@@ -54,42 +54,59 @@ const defaultColors = [
   '#C8BFE7',
 ];
 const additionalColors = [];
+primaryColorBox.style.backgroundColor = '#000';
+secondaryColorBox.style.backgroundColor = '#fff';
 
-let fillColor = '#000000';
+let fillColor = '#000';
 let drawSize = 2;
 
 // selected color ( color one or two)
 let activeColorBox = primaryColorBox;
 let brush = 1;
+
 ////////////////////// Popups///////////////////////
+let poppedUpEl, popUpBtn, wholeEl;
 
 function showPopUp(poppedUpEl, popUpBtn, wholeEl) {
   poppedUpEl.classList.toggle('hidden');
   popUpBtn.classList.toggle('active');
-  window.addEventListener(
-    'click',
-    closePupUpOutside.bind(this, wholeEl, poppedUpEl, popUpBtn)
-  );
+  middleFc(poppedUpEl, popUpBtn, wholeEl);
+  window.addEventListener('click', closePupUpOutside);
+}
+
+function middleFc(poppedUpEl2, popUpBtn2, wholeEl2) {
+  poppedUpEl = poppedUpEl2;
+  popUpBtn = popUpBtn2;
+  wholeEl = wholeEl2;
 }
 function closePopUp(poppedUpEl, popUpBtn) {
   poppedUpEl.classList.toggle('hidden');
   popUpBtn.classList.toggle('active');
   window.removeEventListener('click', closePupUpOutside);
 }
+
 // close popup when click outside the box
-function closePupUpOutside(e, wholeEl, poppedUpEl, popUpBtn) {
+function closePupUpOutside(e) {
   if (!wholeEl.contains(e.target)) {
     popUpBtn.classList.toggle('active');
-    closePopUp(poppedUpEl);
+    closePopUp(poppedUpEl, popUpBtn);
+    window.removeEventListener('click', closePupUpOutside);
+
     e.stopPropagation();
   } else {
     e.stopPropagation();
   }
 }
 //////////////////////// Sizes ////////////////////////
+let sizesMenuIsOpened = false;
 
 lineWidthSelectBtn.addEventListener('click', () => {
-  showPopUp(lineWidthSelectionMenu, lineWidthSelectBtn, panelSizes);
+  if (!sizesMenuIsOpened) {
+    showPopUp(lineWidthSelectionMenu, lineWidthSelectBtn, panelSizes);
+  } else {
+    closePopUp(lineWidthSelectionMenu, lineWidthSelectBtn);
+    sizesMenuIsOpened = true;
+  }
 });
 
 [...lineWidthSelectionList].forEach((option, i) => {
@@ -156,7 +173,7 @@ function toggleColors() {
     primaryColor.classList.toggle('active');
     secondaryColor.classList.toggle('active');
     activeColorBox = this.querySelector('.color-box');
-    fillColor = this.querySelector('.color-box').style.backgroundColor;
+    fillColor = activeColorBox.style.backgroundColor;
   }
 }
 colorPicker.addEventListener('change', addNewColor);
@@ -318,8 +335,8 @@ function drawShape() {
             parseInt(getComputedStyle(canvas2).marginTop) -
             lockY;
 
-          canvas2.width = Math.abs(x);
-          canvas2.height = Math.abs(y);
+          canvas2.width = Math.abs(x) + drawSize * 2;
+          canvas2.height = Math.abs(y) + drawSize * 2;
           canvas2.style.transform = '';
 
           ctx2.lineWidth = drawSize * 2;
@@ -344,8 +361,8 @@ function drawShape() {
           x = Math.abs(x);
           y = Math.abs(y);
 
-          let centerX = x / 2;
-          let centerY = y / 2;
+          let centerX = x / 2 + drawSize;
+          let centerY = y / 2 + drawSize;
           let radiusX = x / 2;
           let radiusY = y / 2;
 
@@ -437,8 +454,3 @@ function drawShape() {
 function drawShapeOff() {
   isDrawShape = false;
 }
-// const test = document.querySelector('.test');
-// const ctxx = test.getContext('2d');
-// drawLine(ctxx, 0, 0, 100, 100);
-// test.style.transform = 'scale(-1,1) translate(100%)';
-// test.style.transform = '';
